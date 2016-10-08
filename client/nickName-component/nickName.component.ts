@@ -9,6 +9,7 @@ import {Inject} from "@angular/core";
 
 
 import "/socket.io/socket.io.js";
+declare var io;
 
 
 @Component({
@@ -20,6 +21,7 @@ import "/socket.io/socket.io.js";
 export class NickNameComponent {
     nickname: string = null;
     protected router;
+    protected globalVars = globalVars;
 
     constructor( @Inject(Router) router: Router) {
         this.router = router;
@@ -28,7 +30,7 @@ export class NickNameComponent {
     submit(data) {
       this.nickname = data.value;
       if (this.nickname) {
-        globalVars.socket = io({ query: "userName=" + this.nickname });
+        this.globalVars.socket = io({ query: "userName=" + this.nickname });
         this.router.navigate(["chat"]);
       }
     }

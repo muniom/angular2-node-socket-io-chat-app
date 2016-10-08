@@ -13,7 +13,7 @@
     },
     "exclude": [
     "node_modules",
-    "client",
+    //"client",
     "typings/index.d.ts",
     "typings/modules",
     "server",
